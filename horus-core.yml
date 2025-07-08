@@ -1,0 +1,27 @@
+name: HORUS Core Eternal
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # تشغيل كل دقيقة
+  workflow_dispatch:       # يدويًا برضه لو حبيت
+  push:
+    branches:
+      - main
+
+jobs:
+  activate-horus:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Activate HORUS
+      run: |
+        echo "[HORUS] Awakening Eternal Process..."
+        python HORUS.py
